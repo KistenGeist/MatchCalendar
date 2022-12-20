@@ -1,0 +1,364 @@
+{
+	"info": {
+		"_postman_id": "8f7028ad-2b1a-4f6d-868d-9857d9705f35",
+		"name": "MatchCalender",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21484794"
+	},
+	"item": [
+		{
+			"name": "calenderevent",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"pm.collectionVariables.set(\"auth_token\", data.newToken);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"1\": {\r\n        \"userName\": \"mb\"\r\n        , \"events\": {\r\n            \"2022-11-02\": {\r\n                \"zwXPQTUx3PJCPx8h24xC\": {\r\n                    \"color\": \"blue\"\r\n                    , \"date\": \"2022-11-02\"\r\n                    , \"description\": \"oh boy\\n\"\r\n                    , \"end\": \"21:27\"\r\n                    , \"id\": \"zwXPQTUx3PJCPx8h24xC\"\r\n                    , \"prevDate\": \"2022-11-01\"\r\n                    , \"start\": \"03:00\"\r\n                    , \"title\": \"Wladi 2022-11-02\"\r\n                },\r\n                \"zwXPQTUx3PJCPx8h25fdd\": {\r\n                    \"color\": \"green\"\r\n                    , \"date\": \"2022-11-03\"\r\n                    , \"description\": \"oh boy Jolli\\n\"\r\n                    , \"end\": \"16:00\"\r\n                    , \"id\": \"zwXPQTUx3PJCPx8h25xD\"\r\n                    , \"prevDate\": \"2022-11-02\"\r\n                    , \"start\": \"13:00\"\r\n                    , \"title\": \"Wladi 2022-11-03\"\r\n                }\r\n            },\r\n            \"2022-11-03\": {\r\n                \"zwXPQTUx3PJCPx8h25xD\": {\r\n                    \"color\": \"green\"\r\n                    , \"date\": \"2022-11-03\"\r\n                    , \"description\": \"oh boy Jolli\\n\"\r\n                    , \"end\": \"16:00\"\r\n                    , \"id\": \"zwXPQTUx3PJCPx8h25xD\"\r\n                    , \"prevDate\": \"2022-11-02\"\r\n                    , \"start\": \"13:00\"\r\n                    , \"title\": \"Wladi 2022-11-03\"\r\n                }\r\n            }\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://h2970110.stratoserver.net/api/{{auth_token}}/{{identifier}}/calenderevent",
+					"protocol": "https",
+					"host": [
+						"h2970110",
+						"stratoserver",
+						"net"
+					],
+					"path": [
+						"api",
+						"{{auth_token}}",
+						"{{identifier}}",
+						"calenderevent"
+					],
+					"query": [
+						{
+							"key": "userid",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "start",
+							"value": "13:00",
+							"disabled": true
+						},
+						{
+							"key": "end",
+							"value": "16:00",
+							"disabled": true
+						},
+						{
+							"key": "title",
+							"value": "Neuer Eintrag",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "Neue Beschreibung",
+							"disabled": true
+						},
+						{
+							"key": "color",
+							"value": "blue",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://h2970110.stratoserver.net/api/signup?email=a@a.de&password=Qwertz1!&username=mb",
+					"protocol": "https",
+					"host": [
+						"h2970110",
+						"stratoserver",
+						"net"
+					],
+					"path": [
+						"api",
+						"signup"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "a@a.de"
+						},
+						{
+							"key": "password",
+							"value": "Qwertz1!"
+						},
+						{
+							"key": "username",
+							"value": "mb"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"pm.collectionVariables.set(\"auth_token\", data.token);\r",
+							"pm.collectionVariables.set(\"identifier\", data.identifier);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://h2970110.stratoserver.net/api/login?email=a@a.de&password=Qwertz1!",
+					"protocol": "https",
+					"host": [
+						"h2970110",
+						"stratoserver",
+						"net"
+					],
+					"path": [
+						"api",
+						"login"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "a@a.de"
+						},
+						{
+							"key": "password",
+							"value": "Qwertz1!"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"pm.collectionVariables.set(\"auth_token\", data.newToken);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://h2970110.stratoserver.net/api/{{auth_token}}/{{identifier}}/test",
+					"protocol": "https",
+					"host": [
+						"h2970110",
+						"stratoserver",
+						"net"
+					],
+					"path": [
+						"api",
+						"{{auth_token}}",
+						"{{identifier}}",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "calenderevent",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"pm.collectionVariables.set(\"auth_token\", data.newToken);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://h2970110.stratoserver.net/api/{{auth_token}}/{{identifier}}/calenderevent?userid=1",
+					"protocol": "https",
+					"host": [
+						"h2970110",
+						"stratoserver",
+						"net"
+					],
+					"path": [
+						"api",
+						"{{auth_token}}",
+						"{{identifier}}",
+						"calenderevent"
+					],
+					"query": [
+						{
+							"key": "userid",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "calenderevent",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"pm.collectionVariables.set(\"auth_token\", data.newToken);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"1\": {\r\n        \"userName\": \"mb\"\r\n        , \"events\": {\r\n            \"2022-11-02\": {\r\n                \"zwXPQTUx3PJCPx8h24xC\": {\r\n                    \"color\": \"blue\"\r\n                    , \"date\": \"2022-11-02\"\r\n                    , \"description\": \"oh boy\\n\"\r\n                    , \"end\": \"21:27\"\r\n                    , \"id\": \"zwXPQTUx3PJCPx8h24xC\"\r\n                    , \"prevDate\": \"2022-11-01\"\r\n                    , \"start\": \"03:00\"\r\n                    , \"title\": \"Wladi 2022-11-02\"\r\n                },\r\n                \"zwXPQTUx3PJCPx8h25fdd\": {\r\n                    \"color\": \"green\"\r\n                    , \"date\": \"2022-11-03\"\r\n                    , \"description\": \"oh boy Jolli\\n\"\r\n                    , \"end\": \"16:00\"\r\n                    , \"id\": \"zwXPQTUx3PJCPx8h25xD\"\r\n                    , \"prevDate\": \"2022-11-02\"\r\n                    , \"start\": \"13:00\"\r\n                    , \"title\": \"Wladi 2022-11-03\"\r\n                }\r\n            },\r\n            \"2022-11-03\": {\r\n                \"zwXPQTUx3PJCPx8h25xD\": {\r\n                    \"color\": \"green\"\r\n                    , \"date\": \"2022-11-03\"\r\n                    , \"description\": \"oh boy Jolli\\n\"\r\n                    , \"end\": \"16:00\"\r\n                    , \"id\": \"zwXPQTUx3PJCPx8h25xD\"\r\n                    , \"prevDate\": \"2022-11-02\"\r\n                    , \"start\": \"13:00\"\r\n                    , \"title\": \"Wladi 2022-11-03\"\r\n                }\r\n            }\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://h2970110.stratoserver.net/api/{{auth_token}}/{{identifier}}/calenderevent?userid=1",
+					"protocol": "https",
+					"host": [
+						"h2970110",
+						"stratoserver",
+						"net"
+					],
+					"path": [
+						"api",
+						"{{auth_token}}",
+						"{{identifier}}",
+						"calenderevent"
+					],
+					"query": [
+						{
+							"key": "userid",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "calenderevent",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"pm.collectionVariables.set(\"auth_token\", data.newToken);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://h2970110.stratoserver.net/api/{{auth_token}}/{{identifier}}/calenderevent?eventID=1",
+					"protocol": "https",
+					"host": [
+						"h2970110",
+						"stratoserver",
+						"net"
+					],
+					"path": [
+						"api",
+						"{{auth_token}}",
+						"{{identifier}}",
+						"calenderevent"
+					],
+					"query": [
+						{
+							"key": "eventID",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "auth_token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "identifier",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
